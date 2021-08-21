@@ -1,0 +1,1119 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap");
+* {
+  position: relative;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html body {
+  height: 100%;
+  padding-top: 70px;
+  font-size: 1.6em;
+  background-color: #ffffff;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Noto Serif JP", serif;
+  color: #222222;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+.container {
+  width: 87%;
+  margin: 0 auto;
+}
+
+.m-btn {
+  display: block;
+  padding: 11px 0 13px;
+  margin: 0 auto;
+  border: 1px solid currentColor;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section__ttl {
+  display: inline-block;
+  margin-bottom: 50px;
+  border-bottom: 2px dotted currentColor;
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+
+.m-section {
+  margin-bottom: 15px;
+  padding: 45px 0;
+}
+
+.list__select {
+  display: -ms-grid;
+  display: grid;
+  -webkit-column-gap: 3vw;
+          column-gap: 3vw;
+}
+
+.list__select .m-btn:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+.list__select .on-page {
+  padding: 1px;
+  border: 1px solid #222222;
+}
+
+.list__select .on-page__btn {
+  background: #222222;
+  color: #ffffff;
+}
+
+.btn-spot {
+  width: 50%;
+  background: rgba(34, 34, 34, 0.3);
+  color: #ffffff;
+  font-size: 1.4rem;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.btn-spot::after {
+  content: "→";
+  padding-left: 5px;
+}
+
+.btn-spot:hover {
+  width: 60%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #222222;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.comingsoon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(34, 34, 34, 0.9);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.comingsoon--ttl {
+  display: block;
+  margin: 0 auto;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background: #222222;
+  color: #ffffff;
+}
+
+.header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 70px;
+}
+
+.header__ttl {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+  .header__ttl {
+    font-size: 2rem;
+  }
+}
+
+.header__ttl--link {
+  display: block;
+  padding: 5px;
+}
+
+.hamburger-btn {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 16px;
+  margin-right: 4vw;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.hamburger-btn__parts {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  position: absolute;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.hamburger-btn__parts.-top {
+  top: 0;
+}
+
+.hamburger-btn__parts.-middle {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.hamburger-btn__parts.-bottom {
+  bottom: 0;
+}
+
+.hamburger-btn.active .hamburger-btn__parts.-top {
+  -webkit-transform: translateY(10px) rotate(-45deg);
+          transform: translateY(10px) rotate(-45deg);
+}
+
+.hamburger-btn.active .hamburger-btn__parts.-middle {
+  opacity: 0;
+}
+
+.hamburger-btn.active .hamburger-btn__parts.-bottom {
+  -webkit-transform: translateY(-4px) rotate(45deg);
+          transform: translateY(-4px) rotate(45deg);
+}
+
+.hamburger {
+  display: none;
+  display: block;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform: translateY(-100vh);
+          transform: translateY(-100vh);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #222222;
+}
+
+.hamburger__lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 70vw;
+  margin: 100px auto 0;
+}
+
+.hamburger__list {
+  font-size: 1.6rem;
+  list-style: none;
+  text-align: left;
+}
+
+.hamburger__list + .hamburger__list {
+  padding-top: 50px;
+}
+
+.hamburger__link {
+  display: block;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  text-decoration: none;
+  color: #222222;
+  font-weight: bold;
+}
+
+.hamburger__link:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+.hamburger.active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.nav {
+  display: none;
+}
+
+.nav__lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.nav__list:not(:last-child) {
+  padding-right: 10px;
+}
+
+.nav__list--btn {
+  display: block;
+  padding: 10px;
+}
+
+/* アコーディオンメニュー全体のサイズ・位置 */
+.hamburger__ac {
+  width: 100%;
+  max-width: 600px;
+  color: #222222;
+  text-align: left;
+  /* クリック領域 */
+  /* クリックしたら表示される領域 */
+}
+
+.hamburger__ac--parent {
+  padding: 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+  /* ①プラスの横線 */
+  /* ②プラスの縦線 */
+  /* ③オープン時にopenクラスを付与（縦線を回転させて非表示に） */
+}
+
+.hamburger__ac--parent:hover {
+  background: #d2d6d2;
+}
+
+.hamburger__ac--parent::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 24px;
+  height: 2px;
+  background: #222222;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.hamburger__ac--parent::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  /* 18px+12px-1px(幅2pxの半分) */
+  right: 29px;
+  width: 2px;
+  height: 24px;
+  background: #222222;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.hamburger__ac--parent.open::after {
+  top: 25%;
+  opacity: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.hamburger__ac--child {
+  display: none;
+  background-color: #ffffff;
+}
+
+.hamburger__ac--child li a {
+  display: block;
+  padding: 20px 0 20px 10%;
+}
+
+.hamburger__ac--child li a:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+.kv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 50vh;
+  background: url(../img/general/kiminonawa-lake.jpg) center/cover;
+}
+
+.kv__copy {
+  margin: auto 0;
+  color: #ffff58;
+  mix-blend-mode: difference;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.theme {
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.theme__txt {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+.theme__txt span {
+  font-weight: bold;
+}
+
+.rules {
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.rules__ttl.--main {
+  margin-bottom: 10px;
+}
+
+.rules__ttl.--sub {
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.rules__ttl.--sub::before, .rules__ttl.--sub::after {
+  content: "〜";
+  padding: 10px;
+}
+
+.rules__ttl.--penalty {
+  display: block;
+  margin: 12vh 0 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.rules__ttl.--penalty i {
+  padding: 0 10px;
+  color: #da4619;
+}
+
+.rules__desc {
+  margin: 0 10px 30px;
+  padding: 5px;
+  border: 3px double;
+  text-align: left;
+}
+
+.rules__lists {
+  margin-left: 40px;
+  list-style: cjk-ideographic;
+  font-size: 1.6rem;
+  text-align: left;
+}
+
+.rules__lists.--penalty {
+  list-style: none;
+  margin-left: 10px;
+}
+
+.rules__list + .rules__list {
+  margin-top: 16px;
+}
+
+.rules__list {
+  padding-left: 10px;
+}
+
+.rules__list.--penalty::before {
+  padding-right: 20px;
+  font-family: "Font Awesome 5 free";
+  font-size: 2.4rem;
+  font-weight: 900;
+  content: "\f714";
+}
+
+.member {
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.member__info {
+  padding-bottom: 30px;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.member__info--01 {
+  border-bottom: 2px dotted #d2d6d2;
+}
+
+.member__info--data {
+  line-height: 1.5em;
+}
+
+.member__info--data::before {
+  content: "# ";
+}
+
+.member__info--data01 {
+  padding-bottom: 10px;
+  font-size: 2rem;
+}
+
+.member__info--img01 {
+  margin: 30px 0;
+  border-radius: 50%;
+}
+
+.member__info--img02 {
+  display: block;
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 10px auto 0;
+  border-radius: 10%;
+}
+
+.member .comingsoon {
+  height: 200px;
+  margin-top: -100px;
+  font-size: 4rem;
+}
+
+.destination {
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.destination__sub-ttl {
+  margin-bottom: 30vh;
+  font-size: 2.4rem;
+}
+
+.destination__neta {
+  margin-bottom: 10vh;
+}
+
+.destination__neta--ttl {
+  margin-top: 30px;
+  font-size: 2.8rem;
+}
+
+.destination__gifu {
+  margin: 20vh 0;
+}
+
+.destination__gifu--ttl {
+  margin-top: 30px;
+  font-size: 3.6rem;
+}
+
+.destination__desc {
+  line-height: 1.7em;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-indent: 1em;
+}
+
+.destination__desc::after {
+  content: "❤";
+}
+
+.destination__desc span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.destination .comingsoon {
+  height: 500px;
+  margin-top: -420px;
+  font-size: 4rem;
+}
+
+.bring {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.bring__lists {
+  text-align: left;
+}
+
+.bring__lists--category {
+  padding: 5px;
+  background-color: #d2d6d2;
+  font-size: 2.4rem;
+}
+
+.bring__lists .bring__list {
+  padding-bottom: 20px;
+}
+
+.bring__lists .bring__list--item {
+  margin: 5px 0 0 15px;
+}
+
+.bring__lists .bring__list--item::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0da";
+  padding-right: 10px;
+  color: #444444;
+  font-weight: 700;
+}
+
+.faq {
+  background: #f2f2f2;
+  text-align: center;
+  /*⑥FAQのアコーディオン*/
+}
+
+.faq__aco-contents--question {
+  margin-top: 15px;
+  padding: 15px 35px 15px 8px;
+  border: 1px solid #222222;
+  background: #ffffff;
+  font-size: 1.4rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__aco-contents--question i {
+  margin-right: 10px;
+}
+
+.faq__aco-contents--question::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  top: 37%;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px gray;
+  border-right: solid 2px gray;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.faq__aco-contents--answer {
+  display: none;
+  border: 1px solid #222222;
+  background: #d2d6d2;
+  color: black;
+  line-height: 1.3em;
+}
+
+.faq__aco-contents--answer p {
+  padding: 25px 15px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.faq a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 70px;
+}
+
+@media screen and (min-width: 992px) {
+  .footer .container {
+    height: 100px;
+  }
+}
+
+.footer__ttl {
+  margin: 0 auto;
+  text-align: center;
+  color: #222222;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+  .footer__ttl {
+    font-size: 2rem;
+  }
+}
+
+.footer .nav__lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.footer .nav__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #222222;
+}
+
+.footer .nav__list:not(:last-child) {
+  padding-right: 26px;
+}
+
+.days {
+  padding: 20px;
+  border-bottom: 3px solid #d2d6d2;
+  text-align: center;
+}
+
+.days .list__select.--days {
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+.main__day1 .timeline__top {
+  background-image: url(../img/spot/takayama/takayama-cityscape.jpg);
+}
+
+.main__day2 .timeline__top {
+  background-image: url(../img/spot/gero/gero-cityscape.jpg);
+}
+
+.main__day3 .timeline__top {
+  background-image: url(../img/member/two-shot-01.JPG);
+  background-position: top;
+}
+
+.timeline__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 300px;
+  background: center/cover;
+}
+
+.timeline__top--ttl {
+  width: 100%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 10px 20px 10px 0;
+  background: rgba(34, 34, 34, 0.76);
+  font-size: 4rem;
+  color: #ffffff;
+  text-align: right;
+}
+
+.timeline-event {
+  padding: 15px;
+}
+
+.timeline-event-copy {
+  background: center/cover;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-blend-mode: lighten;
+  background-repeat: no-repeat;
+}
+
+.timeline-event-thumbnail {
+  font-size: 1.5rem;
+}
+
+.timeline-event-thumbnail,
+.timeline-event h3 {
+  font-weight: 500;
+}
+
+.timeline-event h3,
+.timeline-event h4 {
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.timeline-event h4 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.timeline .day1--shinkansen {
+  background-image: url(../img/general/shinkansen01.jpg);
+}
+
+.timeline .day1--express {
+  background-image: url(../img/general/express.jpg);
+}
+
+.timeline .day1--takayama-burari {
+  background-image: url(../img/spot/takayama/hidabashi.jpg);
+}
+
+.timeline .day1--lunch {
+  background-image: url(../img/spot/takayama/center4.jpg);
+}
+
+.timeline .day1--bus {
+  background-image: url(../img/spot/takayama/sarubobobus.jpg);
+}
+
+.timeline .day1--hidanosato {
+  background-image: url(../img/spot/takayama/shirakawa-go.jpg);
+}
+
+.timeline .day1--mingei {
+  background-image: url(../img/spot/takayama/omoide.jpg);
+}
+
+.timeline .day1--hotel {
+  background-image: url(../img/spot/hotel/day1/takayama__top.jpg);
+}
+
+.timeline .day1--night {
+  background-image: url(../img/spot/takayama/sanmachi-night.jpg);
+}
+
+.timeline .day1--ramen {
+  background-image: url(../img/spot/takayama/shirakawa.jpg);
+}
+
+.timeline .day1--sleep {
+  background-image: url(../img/general/sleep01.jpg);
+}
+
+.timeline .day2--morning {
+  background-image: url(../img/general/morning01.jpg);
+}
+
+.timeline .day2--check-out {
+  background-image: url(../img/general/check-out01.jpg);
+}
+
+.timeline .day2--bus {
+  background-image: url(../img/general/bus01.jpg);
+}
+
+.timeline .day2--shonyudo {
+  background-image: url(../img/spot/takayama/shonyudo.jpg);
+}
+
+.timeline .day2--hidagyu {
+  background-image: url(../img/spot/takayama/takumiya.jpg);
+}
+
+.timeline .day2--express {
+  background-image: url(../img/general/express.jpg);
+}
+
+.timeline .day2--suimeikan {
+  background-image: url(../img/spot/hotel/day2/gero__top.jpg);
+}
+
+.timeline .day2--bath {
+  background-image: url(../img/spot/hotel/day2/bath.jpg);
+}
+
+.timeline .day2--night {
+  background-image: url(../img/spot/gero/gihu_lake.jpg);
+}
+
+.timeline .day2--alcohol {
+  background-image: url(../img/general/alcohol.jpg);
+}
+
+.timeline .day2--sleep {
+  background-image: url(../img/general/sleep02.jpg);
+  background-position: 0 0;
+}
+
+.timeline .day3--morning {
+  background-image: url(../img/general/morning02.jpg);
+}
+
+.timeline .day3--breakfast {
+  background-image: url(../img/general/breakfast.jpg);
+}
+
+.timeline .day3--check-out {
+  background-image: url(../img/general/check-out02.jpg);
+}
+
+.timeline .day3--gero-city {
+  background-image: url(../img/spot/gero/gero-city.jpg);
+}
+
+.timeline .day3--gassyomura {
+  background-image: url(../img/spot/gero/gassyomura.jpg);
+}
+
+.timeline .day3--ideyu {
+  background-image: url(../img/spot/gero/ideyuasaichi.jpg);
+}
+
+.timeline .day3--express {
+  background-image: url(../img/general/express.jpg);
+}
+
+.timeline .day3--shinkansen {
+  background-image: url(../img/general/shinkansen02.png);
+}
+
+.timeline .day3--dinner {
+  background-image: url(../img/general/last-dinner.jpg);
+}
+
+.timeline .day3--ending {
+  background-image: url(../img/member/two-shot-03.JPG);
+  background-position: center 0;
+}
+
+.page-header {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.page-header .list__select {
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.spots-list {
+  border-top: 3px solid #f2f2f2;
+}
+
+.spots-list__item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 4fr;
+      grid-template-columns: 3fr 4fr;
+  -ms-grid-rows: 150px;
+      grid-template-rows: 150px;
+  border-bottom: 3px solid #f2f2f2;
+  overflow: hidden;
+}
+
+.spots-list__item:hover .spots-list__item--img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.spots-list__item--img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.spots-list__item--info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.spots-list__item--ttl {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.spots-list__item--desc {
+  font-size: 1.2rem;
+}
+
+.spots-list__item--link {
+  width: 50%;
+  margin-top: auto;
+  padding: 3px;
+  font-size: 1.4rem;
+}
+
+.spots-list__item--link:hover {
+  width: 60%;
+  padding: 10px 0;
+  background: #222222;
+  color: #ffffff;
+}
+
+.hotel__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 400px;
+}
+
+.hotel__top.--residence {
+  background: url(../img/spot/hotel/day1/takayama__top.jpg) center/cover;
+}
+
+.hotel__top.--suimeikan {
+  background: url(../img/spot/hotel/day2/suimeikan__front.jpg) center/cover;
+}
+
+.hotel__top--ttl.--residence {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0 auto;
+  padding: 5px;
+  background: rgba(68, 68, 68, 0.5);
+  color: #ffffff;
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hotel__top--link.--suimeikan {
+  display: inline-block;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0 auto;
+}
+
+.hotel__top--link.--suimeikan img {
+  width: 240px;
+  -o-object-fit: none;
+     object-fit: none;
+}
+
+.hotel__room {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.hotel__room--gallery {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.hotel__room--gallery img {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.hotel__room--info {
+  font-size: 1.8rem;
+}
+
+.hotel__room--info tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.hotel__room--info th {
+  padding: 10px;
+  background-color: #444444;
+  color: #ffffff;
+}
+
+.hotel__room--info th::before {
+  content: "\025cb";
+  padding-right: 5px;
+}
+
+.hotel__room--info td {
+  padding: 5px 10px;
+  text-align: left;
+}
+
+.hotel__info {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.hotel__info--table {
+  font-size: 1.8rem;
+}
+
+.hotel__info--table tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.hotel__info--table th {
+  padding: 10px;
+  background-color: #444444;
+  color: #ffffff;
+}
+
+.hotel__info--table th::before {
+  content: "\025cb";
+  padding-right: 5px;
+}
+
+.hotel__info--table td {
+  padding: 10px;
+  text-align: left;
+}
+/*# sourceMappingURL=stylesheet.css.map */

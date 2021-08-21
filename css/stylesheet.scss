@@ -1,0 +1,1051 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixin";
+
+// base
+* {
+  position: relative;
+}
+html {
+  font-size: 62.5%;
+
+  body {
+    height: 100%;
+    padding-top: 70px;
+    font-size: 1.6em;
+    background-color: $color-white;
+    -webkit-text-size-adjust: 100%;
+    font-family: $font-family;
+    color: $color-black;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s;
+
+  // &:hover {
+  //   opacity: 0.8;
+  // }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+.container {
+  width: 87%;
+  margin: 0 auto;
+}
+
+// module
+.m-btn {
+  display: block;
+  padding: 11px 0 13px;
+  margin: 0 auto;
+  border: 1px solid currentColor;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section__ttl {
+  display: inline-block;
+  margin-bottom: 50px;
+  border-bottom: 2px dotted currentColor;
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+
+.m-section {
+  margin-bottom: 15px;
+  padding: 45px 0;
+}
+
+.list__select {
+  display: grid;
+  column-gap: 3vw;
+
+  .m-btn {
+    &:hover {
+      background: $color-black;
+      color: $color-white;
+    }
+  }
+
+  .on-page {
+    padding: 1px;
+    border: 1px solid $color-black;
+    &__btn {
+      background: $color-black;
+      color: $color-white;
+    }
+  }
+}
+
+.btn-spot {
+  width: 50%;
+  // border-radius: 30px;
+  background: rgba($color-black, 0.3);
+  color: $color-white;
+  font-size: 1.4rem;
+  transition: 0.1s;
+  &::after {
+    content: "→";
+    padding-left: 5px;
+  }
+
+  &:hover {
+    width: 60%;
+    background: rgba($color-white, 0.9);
+    color: $color-black;
+  }
+}
+
+// utility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.comingsoon {
+  display: flex;
+  align-items: center;
+  background: rgba($color: $color-black, $alpha: 0.9);
+  color: $color-white;
+  font-weight: bold;
+  &--ttl {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+
+
+// header
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background: rgba($color-black, 1);
+  // border-bottom: 1px solid $color-lightgray;
+  color: $color-white;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  &__ttl {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    @include mq(lg) {
+      font-size: 2rem;
+    }
+
+    &--link {
+      display: block;
+      padding: 5px;
+    }
+  }
+}
+
+//------------ここからhamburgerメニュー----------------->
+//スマホのナビゲーション(ハンバーガーメニュー)
+//ハンバーガーの部分
+.hamburger-btn {
+  // display: none;
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 16px;
+  margin-right: 4vw;
+  z-index: 20;
+  cursor: pointer;
+
+  &__parts {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $color-white;
+    position: absolute;
+    transition: transform 0.5s, opacity 0.5s;
+
+    &.-top {
+      top: 0;
+    }
+    &.-middle {
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &.-bottom {
+      bottom: 0;
+    }
+  }
+
+  //タップ後のハンバーガー
+  //１つ目のspanを-45度にする
+  &.active {
+    .hamburger-btn__parts {
+      &.-top {
+        transform: translateY(10px) rotate(-45deg);
+      }
+      //2つ目のspanを消す
+      &.-middle {
+        opacity: 0;
+      }
+      //3番目のspanを45度に
+      &.-bottom {
+        transform: translateY(-4px) rotate(45deg);
+      }
+    }
+  }
+}
+
+//スライドメニュー
+.hamburger {
+  display: none;
+  display: block;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: translateY(-100vh);
+  transition: all 0.3s;
+  background-color: $color-black;
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    // height: 100vh;
+    margin: 100px auto 0;
+  }
+  &__list {
+    font-size: 1.6rem;
+    list-style: none;
+    text-align: left;
+  }
+  &__list + &__list {
+    padding-top: 50px;
+  }
+  &__link {
+    display: block;
+    padding: 20px;
+    border: 1px solid $color-white;
+    background: $color-white;
+    text-decoration: none;
+    color: $color-black;
+    font-weight: bold;
+
+    &:hover {
+      background: $color-black;
+      color: $color-white;
+    }
+  }
+
+  //activeクラスをつけたら、スライドイン
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  display: none;
+  &__lists {
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  &__list {
+    &:not(:last-child) {
+      padding-right: 10px;
+    }
+
+    &--btn {
+      display: block;
+      padding: 10px;
+    }
+  }
+}
+
+/* アコーディオンメニュー全体のサイズ・位置 */
+.hamburger__ac {
+  width: 100%;
+  max-width: 600px;
+  color: $color-black;
+  text-align: left;
+
+  /* クリック領域 */
+  &--parent {
+    padding: 20px;
+    // border-bottom: 1px solid #fff;
+    background-color: $color-white;
+    cursor: pointer;
+    &:hover {
+      background: $color-gray;
+      // color: $color-white;
+    }
+
+    /* ①プラスの横線 */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      width: 24px;
+      height: 2px;
+      background: $color-black;
+      transform: translateY(-50%);
+    }
+    /* ②プラスの縦線 */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      /* 18px+12px-1px(幅2pxの半分) */
+      right: 29px;
+      width: 2px;
+      height: 24px;
+      background: $color-black;
+      transform: translateY(-50%);
+      transition: 0.3s;
+    }
+    /* ③オープン時にopenクラスを付与（縦線を回転させて非表示に） */
+    &.open::after {
+      top: 25%;
+      opacity: 0;
+      transform: rotate(-90deg);
+    }
+  }
+
+  /* クリックしたら表示される領域 */
+  &--child {
+    display: none;
+    background-color: $color-white;
+
+    li {
+      a {
+        display: block;
+        padding: 20px 0 20px 10%;
+
+        &:hover {
+          background: $color-black;
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+// kv
+.kv {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  background: url(../img/general/kiminonawa-lake.jpg) center/cover;
+
+  // &__img {
+  //   height: 300px;
+  //   object-fit: cover;
+  // }
+
+  &__copy {
+    margin: auto 0;
+    // padding: 30px 0;
+    // background-color: rgb(10, 10, 10);
+    color: rgb(255, 255, 88);
+    mix-blend-mode: difference;
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    text-align: center;
+  }
+}
+
+// theme
+.theme {
+  background: $color-lightgray;
+  text-align: center;
+
+  &__txt {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+// rules
+.rules {
+  background: $color-lightgray;
+  text-align: center;
+
+  &__ttl {
+    &.--main {
+      margin-bottom: 10px;
+    }
+    &.--sub {
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      &::before,
+      &::after {
+        content: "〜";
+        padding: 10px;
+      }
+    }
+    &.--penalty {
+      display: block;
+      margin: 12vh 0 30px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      i {
+        padding: 0 10px;
+        color: rgb(218, 70, 25);
+      }
+    }
+  }
+  &__desc {
+    margin: 0 10px 30px;
+    padding: 5px;
+    border: 3px double;
+    text-align: left;
+  }
+  &__lists {
+    margin-left: 40px;
+    list-style: cjk-ideographic;
+    font-size: 1.6rem;
+    text-align: left;
+
+    &.--penalty {
+      list-style: none;
+      margin-left: 10px;
+    }
+  }
+  &__list + &__list {
+    margin-top: 16px;
+  }
+  &__list {
+    padding-left: 10px;
+
+    &.--penalty {
+      &::before {
+        padding-right: 20px;
+        font-family: "Font Awesome 5 free";
+        font-size: 2.4rem;
+        font-weight: 900;
+        content: "\f714";
+      }
+    }
+  }
+}
+
+// member
+.member {
+  background: $color-lightgray;
+  text-align: center;
+  &__info {
+    padding-bottom: 30px;
+    font-size: 1.4rem;
+    text-align: left;
+
+    &--01 {
+      border-bottom: 2px dotted $color-gray;
+    }
+    &--data {
+      line-height: 1.5em;
+      &::before {
+        content: "# ";
+      }
+    }
+
+    &--data01 {
+      padding-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    &--img01 {
+      margin: 30px 0;
+      border-radius: 50%;
+    }
+    &--img02 {
+      display: block;
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+      margin: 10px auto 0;
+      border-radius: 10%;
+    }
+  }
+  .comingsoon {
+    height: 200px;
+    margin-top: -100px;
+    font-size: 4rem;
+  }
+}
+
+// destination
+.destination {
+  background: $color-lightgray;
+  text-align: center;
+  &__sub-ttl {
+    margin-bottom: 30vh;
+    font-size: 2.4rem;
+  }
+
+  &__neta {
+    margin-bottom: 10vh;
+    &--ttl {
+      margin-top: 30px;
+      font-size: 2.8rem;
+    }
+  }
+  &__gifu {
+    margin: 20vh 0;
+    &--ttl {
+      margin-top: 30px;
+      font-size: 3.6rem;
+    }
+  }
+  &__desc {
+    line-height: 1.7em;
+    letter-spacing: 0.1em;
+    text-align: left;
+    text-indent: 1em;
+    &::after {
+      content: "❤";
+    }
+    span {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  }
+
+  .comingsoon {
+    height: 500px;
+    margin-top: -420px;
+    font-size: 4rem;
+  }
+}
+
+// bring
+.bring {
+  background-color: $color-lightgray;
+  text-align: center;
+
+  &__lists {
+    text-align: left;
+    &--category {
+      padding: 5px;
+      background-color: $color-gray;
+      font-size: 2.4rem;
+    }
+
+    .bring__list {
+      padding-bottom: 20px;
+      &--item {
+        margin: 5px 0 0 15px;
+        &::before {
+          font-family: "Font Awesome 5 Free";
+          content: "\f0da";
+          padding-right: 10px;
+          color: $color-darkgray;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+// faq
+.faq {
+  background: $color-lightgray;
+  text-align: center;
+
+  /*⑥FAQのアコーディオン*/
+  &__aco-contents {
+    &--question {
+      margin-top: 15px;
+      padding: 15px 35px 15px 8px;
+      // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+      border: 1px solid $color-black;
+      background: $color-white;
+      font-size: 1.4rem;
+      text-align: left;
+      cursor: pointer;
+
+      i {
+        margin-right: 10px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: 24px;
+        top: 37%;
+        transition: all 0.2s ease-in-out;
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-top: solid 2px gray;
+        border-right: solid 2px gray;
+        transform: rotate(135deg);
+      }
+    }
+
+    &--answer {
+      display: none;
+      // margin-top: 1px;
+      border: 1px solid $color-black;
+      background: $color-gray;
+      color: black;
+      line-height: 1.3em;
+      // letter-spacing: 0.07em;
+
+      p {
+        padding: 25px 15px;
+        margin: 0;
+        font-size: 12px;
+        // text-align: left;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// footer
+.footer {
+  // border: 3px solid red;
+  background: rgba($color-white, 0.8);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    @include mq(lg) {
+      height: 100px;
+    }
+  }
+
+  &__ttl {
+    margin: 0 auto;
+    text-align: center;
+    color: $color-black;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    @include mq(lg) {
+      font-size: 2rem;
+    }
+  }
+
+  .nav {
+    // display: none;
+    // @include mq(lg) {
+    //     display: block;
+    // }
+
+    &__lists {
+      display: flex;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      color: $color-black;
+
+      &:not(:last-child) {
+        padding-right: 26px;
+      }
+
+      //             &-btn {
+      //                 width: 148px;
+      //                 // width: 208px;
+      //             }
+    }
+  }
+}
+
+///////////////////////////////
+////     schedule.html     ////
+///////////////////////////////
+
+// header2
+.days {
+  padding: 20px;
+  border-bottom: 3px solid $color-gray;
+  text-align: center;
+  .list__select {
+    &.--days {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
+// day1
+.main {
+  &__day1 {
+    .timeline__top {
+      background-image: url(../img/spot/takayama/takayama-cityscape.jpg);
+    }
+  }
+  &__day2 {
+    .timeline__top {
+      background-image: url(../img/spot/gero/gero-cityscape.jpg);
+    }
+  }
+  &__day3 {
+    .timeline__top {
+      background-image: url(../img/member/two-shot-01.JPG);
+      background-position: top;
+    }
+  }
+}
+
+// timeline__top
+.timeline__top {
+  display: flex;
+  height: 300px;
+  background: center/cover;
+  &--ttl {
+    width: 100%;
+    align-self: flex-end;
+    padding: 10px 20px 10px 0;
+    background: rgba($color-black, 0.76);
+    font-size: 4rem;
+    color: $color-white;
+    text-align: right;
+  }
+}
+
+// timeline
+.timeline {
+  &-event {
+    padding: 15px;
+    &-copy {
+      background: center/cover;
+      // background-size: 100% 90%;
+      background-color: rgba(255, 255, 255, 0.1);
+      background-blend-mode: lighten;
+      background-repeat: no-repeat;
+    }
+    &-thumbnail {
+      font-size: 1.5rem;
+    }
+    &-thumbnail,
+    h3 {
+      font-weight: 500;
+    }
+    h3,
+    h4 {
+      background: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
+    h4 {
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+  }
+
+  .day1 {
+    &--shinkansen {
+      background-image: url(../img/general/shinkansen01.jpg);
+    }
+    &--express {
+      background-image: url(../img/general/express.jpg);
+    }
+    &--takayama-burari {
+      background-image: url(../img/spot/takayama/hidabashi.jpg);
+    }
+    &--lunch {
+      background-image: url(../img/spot/takayama/center4.jpg);
+    }
+    &--bus {
+      background-image: url(../img/spot/takayama/sarubobobus.jpg);
+    }
+    &--hidanosato {
+      background-image: url(../img/spot/takayama/shirakawa-go.jpg);
+    }
+    &--mingei {
+      background-image: url(../img/spot/takayama/omoide.jpg);
+    }
+    &--hotel {
+      background-image: url(../img/spot/hotel/day1/takayama__top.jpg);
+    }
+    &--night {
+      background-image: url(../img/spot/takayama/sanmachi-night.jpg);
+    }
+    &--ramen {
+      background-image: url(../img/spot/takayama/shirakawa.jpg);
+    }
+    &--sleep {
+      background-image: url(../img/general/sleep01.jpg);
+    }
+  }
+
+  .day2 {
+    &--morning {
+      background-image: url(../img/general/morning01.jpg);
+    }
+    &--check-out {
+      background-image: url(../img/general/check-out01.jpg);
+    }
+    &--bus {
+      background-image: url(../img/general/bus01.jpg);
+    }
+    &--shonyudo {
+      background-image: url(../img/spot/takayama/shonyudo.jpg);
+    }
+    &--hidagyu {
+      background-image: url(../img/spot/takayama/takumiya.jpg);
+    }
+    &--express {
+      background-image: url(../img/general/express.jpg);
+    }
+    &--suimeikan {
+      background-image: url(../img/spot/hotel/day2/gero__top.jpg);
+    }
+    &--bath {
+      background-image: url(../img/spot/hotel/day2/bath.jpg);
+    }
+    &--night {
+      background-image: url(../img/spot/gero/gihu_lake.jpg);
+    }
+    &--alcohol {
+      background-image: url(../img/general/alcohol.jpg);
+    }
+    &--sleep {
+      background-image: url(../img/general/sleep02.jpg);
+      background-position: 0 0;
+    }
+  }
+
+  .day3 {
+    &--morning {
+      background-image: url(../img/general/morning02.jpg);
+    }
+    &--breakfast {
+      background-image: url(../img/general/breakfast.jpg);
+    }
+    &--check-out {
+      background-image: url(../img/general/check-out02.jpg);
+    }
+    &--gero-city {
+      background-image: url(../img/spot/gero/gero-city.jpg);
+    }
+    &--gassyomura {
+      background-image: url(../img/spot/gero/gassyomura.jpg);
+    }
+    &--ideyu {
+      background-image: url(../img/spot/gero/ideyuasaichi.jpg);
+    }
+    &--express {
+      background-image: url(../img/general/express.jpg);
+    }
+    &--shinkansen {
+      background-image: url(../img/general/shinkansen02.png);
+    }
+    &--dinner {
+      background-image: url(../img/general/last-dinner.jpg);
+    }
+    &--ending {
+      background-image: url(../img/member/two-shot-03.JPG);
+      background-position: center 0;
+    }
+  }
+}
+
+///////////////////////////////
+////       spot.html       ////
+///////////////////////////////
+
+// page-header
+.page-header {
+  margin-top: 30px;
+  text-align: center;
+  .list__select {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.spots-list {
+  border-top: 3px solid $color-lightgray;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    grid-template-rows: 150px;
+    border-bottom: 3px solid $color-lightgray;
+    overflow: hidden;
+    &:hover {
+      .spots-list__item--img {
+        transform: scale(1.1);
+      }
+    }
+
+    &--img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    &--info {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    &--ttl {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    &--desc {
+      font-size: 1.2rem;
+    }
+    &--link {
+      width: 50%;
+      margin-top: auto;
+      padding: 3px;
+      font-size: 1.4rem;
+      &:hover {
+        width: 60%;
+        padding: 10px 0;
+        background: $color-black;
+        color: $color-white;
+      }
+    }
+  }
+}
+
+///////////////////////////////
+////    hotel.html    ////
+///////////////////////////////
+
+// hotel__top
+.hotel {
+  &__top {
+    display: flex;
+    height: 400px;
+    &.--residence {
+      background: url(../img/spot/hotel/day1/takayama__top.jpg) center/cover;
+    }
+    &.--suimeikan {
+      background: url(../img/spot/hotel/day2/suimeikan__front.jpg) center/cover;
+    }
+
+    &--ttl {
+      &.--residence {
+        align-self: center;
+        margin: 0 auto;
+        padding: 5px;
+        background: rgba($color-darkgray, 0.5);
+        color: $color-white;
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+
+    &--link {
+      &.--suimeikan {
+        display: inline-block;
+        align-self: center;
+        margin: 0 auto;
+        img {
+          width: 240px;
+          object-fit: none;
+          // border: 1px solid $color-white;
+        }
+      }
+    }
+  }
+
+  // room
+  &__room {
+    background-color: $color-lightgray;
+    text-align: center;
+
+    &--gallery {
+      width: 90%;
+      margin: 0 auto;
+      img {
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+
+    &--info {
+      font-size: 1.8rem;
+      tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      th {
+        padding: 10px;
+        background-color: $color-darkgray;
+        color: $color-white;
+        &::before {
+          content: "\025cb";
+          padding-right: 5px;
+        }
+      }
+      td {
+        padding: 5px 10px;
+        text-align: left;
+      }
+    }
+  }
+
+  &__info {
+    background-color: $color-lightgray;
+    text-align: center;
+
+    &--table {
+      font-size: 1.8rem;
+      tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      th {
+        padding: 10px;
+        background-color: $color-darkgray;
+        color: $color-white;
+        &::before {
+          content: "\025cb";
+          padding-right: 5px;
+        }
+      }
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
+
+
+// color
+$color-white: #ffffff;
+$color-black: #222222;
+$color-cobalt: #3a5199;
+$color-darkgray: #444444;
+$color-gray: #d2d6d2;
+$color-lightgray: #f2f2f2;
+$color-lightgray1: #f5f5f7;
+$color-lightgray2: #738e99;
+$color-primary: #ad9f8a;
+$color-brown: #6e5e46;
+$color-lightbrown: #e6dcd8;
+
+// font family
+$font-family: 'Noto Serif JP', serif;
+// $font-family: 'Noto Sans JP', sans-serif;
+// $font-family: "SF Pro JP","SF Pro Text","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+// break point
+$breakpoints: (
+    "xs": "screen and (max-width: 374px)",
+    "md": "screen and (min-width: 768px)",
+    "lg": "screen and (min-width: 992px)",
+);
+
